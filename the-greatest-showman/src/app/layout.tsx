@@ -1,5 +1,5 @@
 "use client";
-import React, {ReactNode, useState, useEffect} from 'react';
+import React, {ReactNode, useState, useEffect, useRef} from 'react';
 import { IoGameControllerOutline } from "react-icons/io5";
 import { RiTeamFill } from "react-icons/ri";
 import { IoHomeOutline } from "react-icons/io5";
@@ -27,9 +27,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [gifUrl, setGifUrl] = useState("https://s11.gifyu.com/images/SyXSO.gif");
+  const hasLoaded = useRef(false);
 useEffect(() => {
+  window.onload = () => {
+  if(!hasLoaded.current) {
   const newGifUrl = `https://s11.gifyu.com/images/SyXSO.gif?cache_bust=${new Date().getTime()}`;
-  setGifUrl(newGifUrl); // Set the dynamic GIF URL after the first render
+ 
+  setGifUrl(newGifUrl); 
+  hasLoaded.current = true;
+  }
+}
+  return () => {
+    window.onload = null;
+  }
 }, []);
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
