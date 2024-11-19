@@ -1,5 +1,5 @@
 "use client";
-import React, {ReactNode, useState, useEffect, useRef} from 'react';
+import React, {ReactNode, useState, useEffect} from 'react';
 import { IoGameControllerOutline } from "react-icons/io5";
 import { RiTeamFill } from "react-icons/ri";
 import { IoHomeOutline } from "react-icons/io5";
@@ -27,16 +27,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [gifUrl, setGifUrl] = useState("https://s11.gifyu.com/images/SyXSO.gif");
-  const hasLoaded = useRef(false);
+
 useEffect(() => {
   window.onload = () => {
-  if(!hasLoaded.current) {
-  const newGifUrl = `https://s11.gifyu.com/images/SyXSO.gif?cache_bust=${new Date().getTime()}`;
+  
+  const newGifUrl = `https://s11.gifyu.com/images/SyXSO.gif?cache_bust=${new Date().getTime()}_${Math.random()}`;
  
   setGifUrl(newGifUrl); 
-  hasLoaded.current = true;
+  
   }
-}
+
   return () => {
     window.onload = null;
   }
@@ -98,10 +98,7 @@ useEffect(() => {
       </div>
       <main className = "mainContent">
 
-        <div>
-        <h2>test</h2>
-
-        </div>
+       
         {children}
       </main>
      
