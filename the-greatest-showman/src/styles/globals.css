@@ -59,6 +59,7 @@ body {
   url('https://i.ibb.co/rGSw06z/832ba0ce-cfb7-4d84-b791-ea4c404f975a.webp');
   background-repeat: no-repeat; /* Prevent the image from repeating */
   background-size:cover;
+  
    /* Center the image on the page */
   background-attachment: fixed; /* Optional: Makes the background fixed when scrolling */
   color: var(--background);
@@ -126,6 +127,9 @@ a {
   z-index: 1000; 
   animation: slideUp 0.1s ease-out forwards;
   animation-delay: 2s;
+}
+.Click {
+  cursor:pointer;
 }
 
 @media (prefers-color-scheme: dark) {

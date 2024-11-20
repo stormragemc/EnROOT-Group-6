@@ -38,3 +38,36 @@
   margin:80px;
 
 }
+.gameTitle {
+  position:absolute;
+  top:900px;
+  font-size:100px;
+  color:pink;
+  
+}
+.audioPlayer {
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+.audioPlayer * {
+  cursor:pointer;
+}
+.inputBox {
+  border-radius:10px;
+  background-color:white;
+  color:black;
+  height:70px;
+  width:500px;
+  margin:25px;
+  font-size:25px;
+  padding:10px;
+}
+.GUESS {
+  font-weight:bold;
+  font-size:50px;
+  color:violet;
+  cursor:pointer;
+}
