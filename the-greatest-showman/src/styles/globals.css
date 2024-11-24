@@ -1,3 +1,5 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Tangerine:wght@400;700&display=swap');
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -7,43 +9,79 @@
 .titleImage {
   display:flex;
   justify-content:center;
-  
-  background-color:maroon;
+   /* background-image: url('https://i.ibb.co/vYrCj67/apt-1.png');  */
+   background-color:maroon;
+  /* background-image:linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3)), url('https://i.ibb.co/447H4Rh/apt-2.png'); */
+  height:500px;
+  align-items:center;
+  font-family:'Great Vibes', cursive;
+  font-weight:bold;
+  text-align:center;
+  font-size:120px;
+  background-size:80%;
+  z-index:1;
   border-bottom-left-radius:20px;
   border-bottom-right-radius:20px;
  
+  top:0;
+  background-position:center;
   
-  
+  position:relative;
   
 }
+
 .header {
- background-color:rgba(245,245,245,0.8);
+ font-family: 'Great Vibes', cursive;
+ font-size:31px;
+ font-weight:bold;
+ background-image: url('https://i.ibb.co/FXVmYTr/rb-19331.png');
+ background-repeat: no-repeat;
  
+ background-position:center;
+position:relative;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  top: 0; 
+  
+   
   z-index: 100;
-  height:14rem;
+  
+  height:30rem;
+  background-size:125% 105%;
+  
   
   
 }
 
 .header > * {
-  border: 2px solid;
-  border-color:#FF4B4B;
+  
+  border-right-style:solid;
   border-width:4px;
-  padding: 40px 120px;
+  padding: 40px 150px;
   display:flex;
   flex-direction:column;
   align-items:center;
   text-align:center;
-  color:red;
-  border-radius: 10px;
-  margin: 5px 10px;
+  
+  color:black;
+  
+  margin: 50px 10px 10px 10px;
+} 
+.header div:nth-child(3) {
+  border:none;
 }
-
+.pagec{
+  padding: 10px 20px;
+  text-align: left;
+  font-size: 24px; 
+  color: black;
+  font-family:'Great Vibes', cursive;
+}
+.pagec * {
+  margin:4px;
+  
+}
 html,
 body {
   max-width: 100vw;
@@ -84,14 +122,16 @@ a {
   text-decoration: none;
 }
 .mainContent {
-  background-color:#B8860B;
-
- 
-  border-style:hidden;
-  border-color:green;
-  margin:6rem;
+  background-color:#f3ecda;
+  
+  
+  border-color: #e0c070;
+  
+  border-image-width:100px;
+  border-width:20px;
+  margin:6rem 6rem 6rem 6rem;
   border-radius:15px;
-  box-shadow: 1px 1px 8px 8px skyblue;
+  box-shadow: 1px 1px 8px 8px peachpuff;
   margin-top:3rem;
 }
 .smallNavBar {
@@ -105,6 +145,7 @@ a {
 }
 .smallNavBar * {
   margin:10px;
+  color:white;
   
 }
 @keyframes slideUp {
@@ -112,7 +153,7 @@ a {
     transform: translateY(0); /* Start from its original position */
   }
   100% {
-    transform: translateY(-100vh); /* Move the image up by the height of the viewport */
+    transform: translateY(-10.5vh); /* Move the image up by the height of the viewport */
   }
 }
 
@@ -130,6 +171,8 @@ a {
 }
 .Click {
   cursor:pointer;
+  position:absolute;
+  
 }
 
 @media (prefers-color-scheme: dark) {
@@ -137,5 +180,37 @@ a {
     color-scheme: dark;
     
     
+  }
+}
+
+@media (max-width:768px) {
+  .titleImage {
+    font-size:60px;
+    height:20rem;
+    border-radius:0px;
+  }
+  .header{
+    display:none;
+
+  }
+  .pagec{
+    text-align:center;
+    font-family:'Great Vibes', cursive;
+  }
+  
+  .mainContent {
+    margin-top:0px;
+    width: 90%; /* Set a relative width to fit within the screen */
+    box-sizing: border-box;
+    margin-left:18px;
+    height:auto;
+    margin-top:30px;
+    text-align:center;
+    
+    
+  }
+  .curtainGIF {
+  top:10%;
+  
   }
 }

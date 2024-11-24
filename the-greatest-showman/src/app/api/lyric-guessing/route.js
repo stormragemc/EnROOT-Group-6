@@ -1,3 +1,4 @@
+import { randomFill } from 'crypto';
 import { getLyrics, getSong } from 'genius-lyrics-api';
 
 
@@ -10,9 +11,9 @@ const songList = [
         
     },
     {
-        title: 'Way Back Home Sam Feldt Edit',
-        instrumental: 'Way Back Home - Instrumental',
-        artist: 'SHAUN'
+        title: 'Rewrite the Stars',
+        instrumental: 'Rewrite the Stars - Instrumental',
+        artist: 'James Arthur'
        
     },
     
@@ -28,8 +29,8 @@ const songList = [
     },
     
     {
-        title: 'Rather Be',
-        instrumental: 'Rather Be - Instrumental',
+        title: 'Rather Be Clean Bandit',
+        instrumental: 'Rather Be Orchestra - Instrumental',
         artist: 'Clean Bandit'
     },
     
@@ -40,7 +41,7 @@ const songList = [
     },
     {
         title: 'APT',
-        instrumental: 'APT - Instrumental',
+        instrumental: 'APT. -Karaoke Version',
         artist: 'Bruno Mars'
     },
     {
@@ -91,9 +92,16 @@ async function getSongPreview(songName) {
     const accessToken = await getAccessToken();
     const song = await searchSong(accessToken, songName);
 
-    if (song && song.preview_url) {
+    if (song) {
         console.log("Preview URL:", song.preview_url);
-        return song.preview_url
+        const preview_url = song.preview_url;
+       const  id = song.id;
+       
+        console.log('song', id)
+        const result = {preview_url,id}
+        console.log('result',result)
+
+        return result
         // You can use the preview_url to play the clip in an <audio> element, like:
         // <audio controls src={song.preview_url}></audio>
     } else {
@@ -116,6 +124,9 @@ export async function GET(request) {
                 optimizeQuery: true
             };
             const song = await getSong(options)
+            const spotifySong = await getSongPreview(songList[random].title)
+            console.log('spotifySong',spotifySong);
+            const id = spotifySong.id
             
             const url = 
             random == 7? 
@@ -124,9 +135,10 @@ export async function GET(request) {
             'https://p.scdn.co/mp3-preview/6316f6cf12631da62c5b786421b25e66c3ab4ea6':
             random == 9?
             'https://p.scdn.co/mp3-preview/99b97634d18a161489f2a8a4d5efe5399dc3774c':
-            await getSongPreview(songList[random].title)
+            spotifySong.preview_url
+            console.log('id',id)
             songList.splice(random, 1)
-            return new Response(JSON.stringify({song, url}), {
+            return new Response(JSON.stringify({song, url, id}), {
                 status:200,
                 headers: {
                     'Content-Type': 'application/json'
@@ -135,18 +147,20 @@ export async function GET(request) {
             
         }
         else if (action === "instrumental") {
+            const spotifySong = await getSongPreview(songList[randomInstrumental].instrumental)
             const options = {
                 apiKey: 'aj1n259Se0FXF9q4Q3Mn8XXmQJenjJgFRV2fCRVRdwkhT7WZf4-zFCXfljXdDwNN',
                 title: songList[randomInstrumental].title,
                 artist: songList[randomInstrumental].artist,
                 optimizeQuery: true
             };
-            const url = await getSongPreview(songList[randomInstrumental].instrumental)
+            const url = spotifySong.preview_url
+            const id = spotifySong.id
             const song = await getSong(options)
             
             console.log(url)
             songList.splice(randomInstrumental, 1)
-            return new Response(JSON.stringify({song, url}), {
+            return new Response(JSON.stringify({song, url, id}), {
                 status:200,
                 headers: {
                     'Content-Type': 'application/json'

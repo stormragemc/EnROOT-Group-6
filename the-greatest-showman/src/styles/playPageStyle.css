@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=New+Rocker:wght@400;700&display=swap');
+
 .playBody {
     .fade-in-screen {
         position: fixed;
@@ -6,6 +8,7 @@
         width: 100%;
         height: 100%;
         background-color: black;
+        
         z-index: 1000;
         animation: fadeOut 2s forwards;
       }
@@ -22,27 +25,71 @@
     
 }
 .gameContainer {
+  color:black;
+  font-family: 'New Rocker';
   display:flex;
   flex-direction: column;
   align-items:center;
   justify-content: center;
-  background-image: url('https://i.ibb.co/JQYsCF3/picmix-com-1194556.gif');
-  background-size:cover;
-  background-position: center;
-  height:50rem;
-  text-align:center;
+  /* background-image: url('https://i.ibb.co/JQYsCF3/picmix-com-1194556.gif'); */
+  background-color: #FF007F;
+  /* background-image: url('https://i.ibb.co/pvT4WG8/apt.png'); */
+  
+ 
 
+  height:40rem;
+  text-align:center;
+  
+  overflow:hidden;
+
+}
+.gameContainer * {
+  z-index: 2;
+}
+.image{
+  display:flex;
+  width:125%;
+  height:100%;
+  justify-content:center;
+  align-items:center;
+}
+
+.bolts {
+  position:relative;
+  z-index:1;
+  height:100%;
+  width:100%;
+  animation: vibrate 1s infinite;
+
+  
+}
+@keyframes vibrate {
+  0% {
+     transform: translate(0px, 0px) rotate(0deg);
+  }
+  25% {
+    transform: translate(1px,-1px) rotate(-1deg);
+
+  }
+  50% {
+    transform: translate(-1px, 1px) rotate(1deg);
+  }
+  75% {
+    transform: translate(1px,1px) rotate(-1deg);
+  }
+  100% {
+    transform: translate(0px,0px) rotate(0deg);
+  }
 }
 .gameTitleImage {
   border-radius:1000px;
-  margin:80px;
+  margin:40px;
 
 }
 .gameTitle {
-  position:absolute;
-  top:900px;
+  animation: colorSwitch 5s  ease infinite;
   font-size:100px;
-  color:pink;
+  
   
 }
 .audioPlayer {
@@ -56,7 +103,7 @@
   cursor:pointer;
 }
 .inputBox {
-  border-radius:10px;
+  border-radius:30px;
   background-color:white;
   color:black;
   height:70px;
@@ -65,9 +112,160 @@
   font-size:25px;
   padding:10px;
 }
+.nextStage{
+  margin:10px;
+  border-style:solid;
+  border-radius:100px;
+  padding:10px 0px 10px 0px;
+  background-color:red;
+  color:black;
+  height:100px;
+  font-size:40px;
+  visibility:hidden;
+  animation: grow 2s infinite;
+  
+}
+@keyframes grow {
+  0% {
+    
+     transform: scale(0.85,0.85);
+  }
+  50% {
+    transform: scale(1,1);
+  }
+
+  100% {
+    transform: scale(0.85,0.85);
+  }
+}
+
 .GUESS {
   font-weight:bold;
   font-size:50px;
-  color:violet;
+  color:black;
+  border-style:solid;
+  border-radius:30px;
+  background-color:white;
   cursor:pointer;
+  height:69px;
+  
+  transition: font-size 1s ease;
+}
+.GUESS:hover {
+ 
+  font-size:57px;
+
+  transition: font-size 1s ease;
+}
+.loading {
+  animation: spin 2s infinite;
+}
+
+@keyframes spin {
+ 0% {
+  transform: rotate(0deg);
+ }
+ 100% {
+  transform: rotate(360deg);
+ }
+}
+.winnerBackground {
+  background-image: url('https://i.ibb.co/JQYsCF3/picmix-com-1194556.gif');
+  width:90%;
+  height:100%;
+  border-radius:50px;
+  z-index:2000;
+  position:absolute;
+  background-repeat:no repeat;
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  flex-direction:column;
+  
+  justify-content: center;
+  align-items:center;
+  color:white;
+  animation: colorSwitch 5s ease infinite;
+}
+.winnerBackground * {
+  margin:10px;
+}
+.lyrics {
+  font-size: 2rem;
+  font-weight: bold;
+  background-color:#222;
+  color:white;
+  background: linear-gradient(to left, black, white);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200%; /* Make the gradient longer for the animation */
+  background-position: 0% 50%;
+  animation: textFade 1s linear infinite;
+}
+
+@keyframes textFade {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+.rainbow {
+  animation: colorSwitch 5s ease infinite;
+}
+@keyframes colorSwitch {
+  0% {
+    color: red;
+  }
+  20% {
+    color:yellow;
+  }
+  30% {
+    color:green;
+  }
+  40% {
+    color: blue;
+  }
+  
+  50% {
+    color: violet ;
+  }
+  60% {
+    color: blue;
+  }
+  70% {
+    color: green;
+  
+  }
+  80% {
+    color:yellow;
+  }
+  100% {
+    color:red;
+  }
+}
+
+@media(max-width:768px) {
+  .gameContainer *{
+    width: 90%; /* Adjust child elements to fit inside */
+    max-width: 100%; /* Prevent overflow */
+    box-sizing: border-box; /* Include padding in width calculation */
+    margin: 10px auto; 
+  }
+  .gameTitle {
+    font-size:50px;
+  }
+  .gameTitleImage{
+    height:40%;
+    width:40%;
+  }
+  .bolts {
+    object-fit:cover;
+    
+
+  }
+  .inputBox {
+    height:30%;
+  }
 }
