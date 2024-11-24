@@ -1,7 +1,7 @@
 import '../../styles/globals.css'
 
 import React from 'react'
-
+import Image from 'next/image'
 const HomePageC: React.FC = () => {
   return (
     
@@ -18,6 +18,15 @@ const HomePageC: React.FC = () => {
       <p>•A perfect evening to unwind, laugh, and create lasting memories.</p>
       <p>Don’t miss your chance to be part of The Greatest Showman experience! <a style  = {{textDecoration: 'underline', fontWeight:'bold'}} href = 'https://forms.office.com/r/tcgwyttTP9?origin=lprLink'>Sign up here</a> and get ready for a night of spectacular entertainment.</p>
       <p>Let the show begin! 🎭✨</p>
+      <div>
+      <Image
+      src = 'https://i.ibb.co/CwfPjkt/root-logo-black-removebg-preview.png'
+      width = {125}
+      height = {125}
+      style = {{marginTop:40}}
+      alt = 'root logo'
+      />
+      </div>
     </div>
     
   )

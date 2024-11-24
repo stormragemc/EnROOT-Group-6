@@ -77,6 +77,8 @@ position:relative;
   font-size: 24px; 
   color: black;
   font-family:'Great Vibes', cursive;
+  display:flex;
+  flex-direction:column;
 }
 .pagec * {
   margin:4px;
