@@ -15,10 +15,15 @@ const PlayPageC: React.FC = () => {
 
         url: string;
         id: string;
-        song: object;
+        song: Song;
 
 
 
+
+    }
+    interface Song {
+        title: string;
+        lyrics: string;
     }
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const [data, setData] = useState<LyricsData | null>(null);
@@ -131,7 +136,8 @@ const PlayPageC: React.FC = () => {
         setStage(1)
     }
     const nextStage = () => {
-        document.getElementById('answerInput').hidden = false;
+        const answer = document.getElementById('answerInput') as HTMLInputElement || null;
+        answer.hidden = false;
         setData(null)
         setStage(prevStage => prevStage + 1);
 
@@ -144,19 +150,26 @@ const PlayPageC: React.FC = () => {
 
             console.log(data?.song.title)
             if (answer.value.replace(/[(),.!?]/g, '').toLowerCase().trim() == data?.song.title) {
-                document.getElementById(`guess${stage}`).hidden = true;
-                document.getElementById("nextStage").style.visibility = 'visible';
-                document.getElementById("answerInput").hidden = true;
-                document.getElementById('answerKey').hidden = false;
+                const guess = document.getElementById(`guess${stage}`) as HTMLInputElement || null;
+                const nextStage = document.getElementById("nextStage") as HTMLInputElement || null;
+                const answerInput = document.getElementById("answerInput") as HTMLInputElement || null;
+                const answerKey = document.getElementById("answerKey") as HTMLInputElement || null;
+               guess.hidden = true;
+                nextStage.style.visibility = 'visible';
+                answerInput.hidden = true;
+                answerKey.hidden = false;
             }
 
         }
         else {
 
-            if (answer.value.replace(/[.,!?"']/g, '').toLowerCase().trim() == line[2].replace(/[.,!?"']/g, '').toLowerCase().trim()) {
-                document.getElementById("answerInput").hidden = true;
-                document.getElementById('answerKey').hidden = false;
-                document.getElementById(`guess${stage}`).hidden = true;
+            if (line && answer.value.replace(/[.,!?"']/g, '').toLowerCase().trim() == line[2].replace(/[.,!?"']/g, '').toLowerCase().trim()) {
+                const answer = document.getElementById('answerInput') as HTMLInputElement || null;
+                const answerKey= document.getElementById('answerKey') as HTMLInputElement || null;
+                const guess = document.getElementById(`guess${stage}`) as HTMLInputElement || null;
+                answer.hidden = true;
+                answerKey.hidden = false;
+                guess.hidden = true;
                 setStage(5);
             }
 
@@ -350,8 +363,15 @@ const PlayPageC: React.FC = () => {
             {stage == 4 && data && (
                 <div style = {{position:'absolute'}}>
                     <div style = {{fontSize:30}} className = 'lyrics'>
+                    {line && (
+                    
                     <pre><strong>{line[0]? line[0]: ''}</strong></pre>
+                    )}
+                    {line && (
                     <pre><strong>{line[1]? line[1] : ''}</strong></pre>
+                    )
+}
+                    
                     </div>
                     <div id = 'answerKey' hidden className = 'answerKey'>
                     <iframe style = {{borderRadius:20, width:500, height:156}}
