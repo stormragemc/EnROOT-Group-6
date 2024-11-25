@@ -98,7 +98,7 @@ useEffect(() => {
         <IoGameControllerOutline size = {60}/>
         </span>
         <br></br>
-        <h2>Play</h2>
+        <h2>Secret<br></br>Challenge</h2>
       
         </Link>
         </div>
