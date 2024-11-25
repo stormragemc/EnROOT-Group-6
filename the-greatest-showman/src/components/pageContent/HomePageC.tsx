@@ -1,11 +1,17 @@
 import '../../styles/globals.css'
-
+import { Great_Vibes } from 'next/font/google';
 import React from 'react'
 import Image from 'next/image'
+const greatVibes = Great_Vibes({
+  subsets: ['latin'],
+  weight:'400',
+  variable: '--font-greatVibes'
+});
 const HomePageC: React.FC = () => {
+
   return (
     
-    <div className='pagec'>
+    <div className={`pagec ${greatVibes.variable}`}>
     <h1 style={{color:'black' ,fontSize:55,marginBottom:30, textAlign:'center'}}>What is Our Event?</h1>
       <p>Step right up and witness the spectacle! The Greatest Showman is here to light up your night with an unforgettable blend of music, dance, and pure entertainment. 🎪✨</p>
       <p>🗓 Date: 27th November</p>

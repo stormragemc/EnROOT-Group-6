@@ -3,12 +3,17 @@ import React, {ReactNode, useState, useEffect} from 'react';
 import { IoGameControllerOutline } from "react-icons/io5";
 import { RiTeamFill } from "react-icons/ri";
 import { IoHomeOutline } from "react-icons/io5";
+import {Great_Vibes} from 'next/font/google';
 import Image from 'next/image';
 import localFont from "next/font/local";
 import Link from 'next/link';
 
 import "../styles/globals.css";
-
+const greatVibes = Great_Vibes({
+  subsets: ['latin'],
+  weight:'400',
+  variable: '--font-greatVibes'
+});
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -67,7 +72,7 @@ useEffect(() => {
 
     </div>
     
-    <div className = 'titleImage'>
+    <div className ={ `titleImage ${greatVibes.variable}`}>
       
       
       {/* <Image src = "https://i.ibb.co/vxSS1JF/Untitled-3.png" 
@@ -79,7 +84,7 @@ useEffect(() => {
       <p>The Greatest Showman</p>
       
       </div>
-      <header className = 'header'>
+      <header className = {`header ${greatVibes.variable}`}>
       
         <div className = 'logo'>
         <Link href="/">
