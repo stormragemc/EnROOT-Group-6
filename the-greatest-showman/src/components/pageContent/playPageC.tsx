@@ -119,15 +119,15 @@ const PlayPageC: React.FC = () => {
         const cleanedLyrics = lyrics.replace(/\[.*?\]/g, '').trim();
         const paragraphs = cleanedLyrics.split(/\n\n/).map(p => p.trim()).filter(p => p);
 
-        // Ensure there are paragraphs to choose from
+       
         if (paragraphs.length === 0) {
             return null;
         }
 
-        // Generate a random index
+        
         const randomIndex = Math.floor(Math.random() * paragraphs.length);
 
-        // Return the random paragraph
+        
         return paragraphs[randomIndex];
     }
     const line = data?.song.lyrics.split('\n')
@@ -141,7 +141,7 @@ const PlayPageC: React.FC = () => {
         setData(null)
         setStage(prevStage => prevStage + 1);
 
-        // Increment stage
+        
     };
     
     const winCondition = () => {

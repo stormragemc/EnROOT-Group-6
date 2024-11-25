@@ -5,7 +5,10 @@
   --foreground: #171717;
 }
 
+.footerList * {
+  padding:8px;
 
+}
 .titleImage {
 
   display:flex;
@@ -98,11 +101,11 @@ body {
 body {
   background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), 
   url('https://i.ibb.co/rGSw06z/832ba0ce-cfb7-4d84-b791-ea4c404f975a.webp');
-  background-repeat: no-repeat; /* Prevent the image from repeating */
+  background-repeat: no-repeat; 
   background-size:cover;
   
-   /* Center the image on the page */
-  background-attachment: fixed; /* Optional: Makes the background fixed when scrolling */
+  
+  background-attachment: fixed; 
   color: var(--background);
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -153,10 +156,10 @@ a {
 }
 @keyframes slideUp {
   0% {
-    transform: translateY(0); /* Start from its original position */
+    transform: translateY(0); 
   }
   100% {
-    transform: translateY(-10.5vh); /* Move the image up by the height of the viewport */
+    transform: translateY(-10.5vh); 
   }
 }
 
@@ -167,7 +170,7 @@ a {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures the image covers the entire screen */
+  object-fit: cover;
   z-index: 1000; 
   animation: slideUp 0.1s ease-out forwards;
   animation-delay: 2s;
@@ -203,7 +206,7 @@ a {
   
   .mainContent {
     margin-top:0px;
-    width: 90%; /* Set a relative width to fit within the screen */
+    width: 90%;
     box-sizing: border-box;
     margin-left:18px;
     height:auto;

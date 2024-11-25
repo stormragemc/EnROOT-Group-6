@@ -71,7 +71,7 @@ async function getAccessToken() {
     });
 
     const data = await response.json();
-    return data.access_token; // Use this token to make API requests
+    return data.access_token;
 }
 
 
@@ -86,7 +86,7 @@ async function searchSong(accessToken,song) {
     });
 
     const data = await response.json();
-    return data.tracks.items[0]; // This should be the first result for the track
+    return data.tracks.items[0]; 
 }
 async function getSongPreview(songName) {
     const accessToken = await getAccessToken();
@@ -102,8 +102,7 @@ async function getSongPreview(songName) {
         console.log('result',result)
 
         return result
-        // You can use the preview_url to play the clip in an <audio> element, like:
-        // <audio controls src={song.preview_url}></audio>
+ 
     } else {
         console.log("Preview not available for this song.");
     }

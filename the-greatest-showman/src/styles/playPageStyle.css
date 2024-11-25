@@ -198,7 +198,7 @@
   background: linear-gradient(to left, black, white);
   -webkit-background-clip:text;
   -webkit-text-fill-color: transparent;
-  background-size: 200%; /* Make the gradient longer for the animation */
+  background-size: 200%; 
   background-position: 0% 50%;
   animation: textFade 1s linear infinite;
 }
@@ -248,9 +248,9 @@
 
 @media(max-width:768px) {
   .gameContainer *{
-    width: 90%; /* Adjust child elements to fit inside */
-    max-width: 100%; /* Prevent overflow */
-    box-sizing: border-box; /* Include padding in width calculation */
+    width: 90%; 
+    max-width: 100%; 
+    box-sizing: border-box; 
     margin: 10px auto; 
   }
   .gameTitle {
